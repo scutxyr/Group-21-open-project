@@ -1,0 +1,8 @@
+# run special case in order_test.py under QA env (test_add_product_into_cart_from_excel)
+python -m pytest --test_env QA -k 'test_aaa' test_cases\xxx_test.py --alluredir=.\test_reports --clean-alluredir
+
+# run all test in order_test.py under QA env
+python -m pytest --test_env UAT test_cases\xxx_test.py --alluredir=.\test_reports --clean-alluredir
+
+# generate report
+allure serve --host localhost --port 5678 .\test_reports

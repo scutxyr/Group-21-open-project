@@ -1,0 +1,51 @@
+<<<<<<< .mine
+# 忽略 Python 编译文件
+*.pyc
+ 
+# 忽略 pytest 缓存目录
+**/.pytest_cache/
+ 
+# 忽略 pycharm 配置文件目录
+.idea/
+ 
+# 忽略虚拟环境目录
+venv/
+env/
+.venv/
+.env/
+ 
+# 忽略日志文件
+*.log
+ 
+# 忽略运行结果和下载的文件
+test_reports/
+test_results/
+data/download/
+
+
+=======
+# 忽略 Python 编译文件
+*.pyc
+
+# 忽略 pytest 缓存目录
+**/.pytest_cache/
+
+# 忽略 pycharm 配置文件目录
+.idea/
+
+# 忽略虚拟环境目录
+venv/
+env/
+.venv/
+.env/
+
+# 忽略日志文件
+*.log
+
+# 忽略运行结果和下载的文件
+test_reports/
+test_results/
+data/download/
+
+
+>>>>>>> .theirs
