@@ -242,16 +242,14 @@ public class VmToolCommand extends AnnotatedCommand {
 
                 return;
             } else if (VmToolAction.mallocTrim.equals(action)) {
-                int result = vmToolInstance().mallocTrim();
+                // int result = vmToolInstance().mallocTrim();
                 process.write("\n");
-                process.end(result == 1 ? 0 : -1, "mallocTrim result: " +
-                    (result == 1 ? "true" : (result == 0 ? "false" : "not supported")));
+                process.end(-1, "mallocTrim is not supported in current build");
                 return;
             } else if (VmToolAction.mallocStats.equals(action)) {
-                boolean result = vmToolInstance().mallocStats();
+                // boolean result = vmToolInstance().mallocStats();
                 process.write("\n");
-                process.end(result ? 0 : -1, "mallocStats result: " +
-                    (result ? "true" : "not supported"));
+                process.end(-1, "mallocStats is not supported in current build");
                 return;
             }
 
