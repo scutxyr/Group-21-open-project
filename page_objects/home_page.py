@@ -15,7 +15,8 @@ from infrastructure.utils import ReUtils, WebDriverUtils
 
 class _Locator(object):
     loc_root = "//div[@id='root']"
-    loc_variable_button = "//a[@data-value='variables']"
+    loc_controller = "//textarea[@class='xterm-helper-textarea']"
+    loc_terminal = "//div[@id='terminal']"
 
 
 class _HomePageElements(object):
@@ -27,8 +28,12 @@ class _HomePageElements(object):
         return self.page.find_element(_Locator.loc_root)
 
     @property
-    def variables_button(self):
-        return self.page.find_element(_Locator.loc_variable_button)
+    def controller(self) -> WebElement:
+        return self.page.find_element(_Locator.loc_controller)
+
+    @property
+    def terminal(self) -> WebElement:
+        return self.page.find_elements(_Locator.loc_terminal)
 
 class HomePage(object):
     def __init__(self):
@@ -36,5 +41,8 @@ class HomePage(object):
         # self.page.wait.wait_page_loading()
         self.elements = _HomePageElements()
 
-    def click_variable_button(self):
-        self.page.click(self.elements.variables_button)
+    def click_controller(self):
+        self.page.click(self.elements.controller)
+
+    def get_terminal_text(self) -> str:
+        return self.page.get_canvas_content(self.elements.terminal)

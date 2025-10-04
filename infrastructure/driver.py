@@ -230,7 +230,7 @@ class DriverWrapper(object):
     def scroll_to(self, v_pixel):
         self.driver.execute_script(f'window.scrollTo(0,{v_pixel})')
 
-    def get_canvas_content(self, target):
+    def get_canvas_content(self, target, threshold=127):
         """
         OCR提取pdf文件中的文本内容（canvas元素）
         目前OCR识别准确率不高，只能用来判断其中是否包含某些关键内容，如果断言失败，需人工复验
@@ -238,14 +238,13 @@ class DriverWrapper(object):
         :return: canvas中的文本内容
         """
         content = ''
-        if not isinstance(target, WebElement):
-            target = self.find_elements(target)
         for t in target:
-            canvas_data = self.driver.execute_script('return arguments[0].toDataURL().substring(22);', t)
-            canvas_image = Image.open(BytesIO(base64.b64decode(canvas_data)))
-            gray_image = canvas_image.convert('L')
-            extracted_text = pytesseract.image_to_string(gray_image, lang='chi_sim')
+            canvas_data = t.screenshot_as_base64
+            canvas_image = Image.open(BytesIO(base64.b64decode(canvas_data))).convert("RGB")
+            inverted_image = Image.eval(canvas_image, lambda x: 255 - x)
+            gray_image = inverted_image.convert('L')
+            binary_image = gray_image.point(lambda p: 255 if p > threshold else 0)
+            extracted_text = pytesseract.image_to_string(binary_image, lang='eng')
             c = re.sub(r'\n+', '\n', extracted_text)
-            c = c.replace(' ', '')
             content += c + '\n'
         return content
