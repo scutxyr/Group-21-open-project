@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: arthas-boot
+Implementation-Version: 4.0.5
+Specification-Title: arthas-boot
+Build-Jdk-Spec: 1.8
+Created-By: core engine team, middleware group, alibaba inc.
+Specification-Version: 4.0.5
+Main-Class: com.taobao.arthas.boot.Bootstrap
+
