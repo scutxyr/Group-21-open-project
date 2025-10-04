@@ -1,5 +1,5 @@
 cd math-game
 mvn compile -q
 cd ..
-cmd /c 'start "MathGame-Demo" cmd /k "java -cp math-game\target\classes demo.MathGame"'
+start "MathGame-Demo" cmd /k "java -cp math-game\target\classes demo.MathGame"
 java -jar arthas-boot.jar
