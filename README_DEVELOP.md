@@ -37,17 +37,26 @@ run in terminal 2:
 Then success. have fun!
 
 ### For Linux:
-1. update your dependencies by npm or yarn(suspicious)
+0. check your environment:
+   - idea(2024.1.6 (Ultimate Edition))
+   - git(2.51.0)
+   - nodejs(v24.8.0), so as npm(11.6.0)
+   - yarn(1.22.22)
+   - java8(openjdk1.8.0.462)
+   - maven(Apache Maven 3.9.11)
+   - make sure set java8 and maven into the PATH
+1. update your dependencies by npm or yarn
 
    ```zsh
-   npm install
+   npm install(suspicious)
    or
-   yarn
+   yarn (recommand)
    ```
-2. make sure you have jdk, jre, nodejs, and the version is java8
-3. make sure your maven use the correct JAVA_HOME, if not, try
+2. make sure your maven use the correct JAVA_HOME, run
 
    ```zsh
+   (recommand) mvn clean compile -DskipTests -Dcheckstyle.skip=true -pl common,spy,core,boot,agent
+   or
    JAVA_HOME=/usr/lib/jvm/java-8-openjdk mvn clean compile -DskipTests -Dcheckstyle.skip=true -pl common,spy,core,boot,agent
    ```
 
@@ -56,8 +65,6 @@ Then success. have fun!
     - First, you can run the Class Bootstrap directly. The file is under path:
       ```zsh
       JAVA_HOME=/usr/lib/jvm/java-8-openjdk mvn clean compile -DskipTests -Dcheckstyle.skip=true -pl common,spy,core,boot,agent
-      or
-      mvn clean compile -DskipTests -Dcheckstyle.skip=true -pl common,spy,core,boot,agent
       ```
 
     - You can also build a jar, just by
