@@ -39,7 +39,7 @@ import com.taobao.middleware.cli.annotations.Summary;
 import arthas.VmTool;
 
 /**
- * 
+ *
  * @author hengyunabc 2021-04-27
  * @author ZhangZiCheng 2021-04-29
  *
@@ -241,7 +241,7 @@ public class VmToolCommand extends AnnotatedCommand {
                 process.end();
 
                 return;
-            } else if (VmToolAction.mallocTrim.equals(action)) {
+            } /*else if (VmToolAction.mallocTrim.equals(action)) {
                 int result = vmToolInstance().mallocTrim();
                 process.write("\n");
                 process.end(result == 1 ? 0 : -1, "mallocTrim result: " +
@@ -253,7 +253,7 @@ public class VmToolCommand extends AnnotatedCommand {
                 process.end(result ? 0 : -1, "mallocStats result: " +
                     (result ? "true" : "not supported"));
                 return;
-            }
+            }*/
 
             process.end();
         } catch (Throwable e) {

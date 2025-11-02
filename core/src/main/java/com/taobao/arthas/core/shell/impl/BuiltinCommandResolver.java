@@ -7,9 +7,10 @@ import com.taobao.arthas.core.shell.command.CommandResolver;
 import com.taobao.arthas.core.shell.command.internal.GrepHandler;
 import com.taobao.arthas.core.shell.command.internal.PlainTextHandler;
 import com.taobao.arthas.core.shell.command.internal.WordCountHandler;
+import com.taobao.arthas.core.shell.command.biz.BitzStatsHandler;
 import com.taobao.arthas.core.shell.handlers.Handler;
 import com.taobao.arthas.core.shell.handlers.NoOpHandler;
-
+import com.taobao.arthas.core.shell.command.biz.BitzStatsCommand;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,9 +20,11 @@ import java.util.List;
 class BuiltinCommandResolver implements CommandResolver {
 
     private Handler<CommandProcess> handler;
+    private Handler<CommandProcess> bitzStatsHandler;
 
     public BuiltinCommandResolver() {
         this.handler = new NoOpHandler<CommandProcess>();
+        this.bitzStatsHandler = new BitzStatsHandler();
     }
 
     @Override
@@ -34,6 +37,7 @@ class BuiltinCommandResolver implements CommandResolver {
                              CommandBuilder.command("kill").processHandler(handler).build(),
                              CommandBuilder.command(PlainTextHandler.NAME).processHandler(handler).build(),
                              CommandBuilder.command(GrepHandler.NAME).processHandler(handler).build(),
-                             CommandBuilder.command(WordCountHandler.NAME).processHandler(handler).build());
+                             CommandBuilder.command(WordCountHandler.NAME).processHandler(handler).build(),
+                             CommandBuilder.command("bitzstats").processHandler(bitzStatsHandler).build());
     }
 }
