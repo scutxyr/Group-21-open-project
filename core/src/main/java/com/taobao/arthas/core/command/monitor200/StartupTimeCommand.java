@@ -25,13 +25,20 @@ import java.lang.management.RuntimeMXBean;
         "  startup-time --format human     # Human readable format")
 public class StartupTimeCommand extends AnnotatedCommand {
 
+    private boolean detailed = false;
+    private String format = "human";
+
     @Option(shortName = "d", longName = "detailed")
     @Description("Show detailed startup information")
-    private boolean detailed = false;
+    public void setDetailed(boolean detailed) {
+        this.detailed = detailed;
+    }
 
     @Option(longName = "format")
     @Description("Output format: human, json (default: human)")
-    private String format = "human";
+    public void setFormat(String format) {
+        this.format = format;
+    }
 
     @Override
     public void process(CommandProcess process) {
