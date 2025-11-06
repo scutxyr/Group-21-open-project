@@ -6,7 +6,7 @@ import java.util.List;
  * 启动时间统计结果模型
  *
  * @author Huang Junhao
- */
+ **/
 
 public class StartupTimeModel extends ResultModel {
 
