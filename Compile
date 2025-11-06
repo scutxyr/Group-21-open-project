@@ -22,3 +22,16 @@ mvn clean package -DskipTests
 
 # 4. 替换缓存中的 jar
 Copy-Item "..\core\target\arthas-core-shade.jar" "C:\Users\Fenix\.arthas\lib\4.0.5\arthas\arthas-core.jar" -Force
+
+# 1. 编译项目
+cd core
+mvn clean compile package -DskipTests
+
+cd ../boot
+mvn clean package -DskipTests
+
+# 2. 启动测试应用
+java -cp math-game/target/classes demo.MathGame
+
+# 3. 运行 Arthas
+java -jar boot/target/arthas-boot-jar-with-dependencies.jar
