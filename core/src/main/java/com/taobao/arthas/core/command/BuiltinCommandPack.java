@@ -25,7 +25,7 @@ import com.taobao.arthas.core.command.monitor200.HeapDumpCommand;
 import com.taobao.arthas.core.command.monitor200.JvmCommand;
 import com.taobao.arthas.core.command.monitor200.MBeanCommand;
 import com.taobao.arthas.core.command.monitor200.MemoryCommand;
-import com.taobao.arthas.core.command.monitor200.MemoryLeakCommand;
+//import com.taobao.arthas.core.command.monitor200.MemoryLeakCommand;
 import com.taobao.arthas.core.command.monitor200.MonitorCommand;
 import com.taobao.arthas.core.command.monitor200.PerfCounterCommand;
 import com.taobao.arthas.core.command.monitor200.ProfilerCommand;
@@ -77,7 +77,7 @@ public class BuiltinCommandPack implements CommandResolver {
         commandClassList.add(JvmCommand.class);
         commandClassList.add(MemoryCommand.class);
         commandClassList.add(PerfCounterCommand.class);
-        // commandClassList.add(GroovyScriptCommand.class);
+        //commandClassList.add(GroovyScriptCommand.class);
         commandClassList.add(OgnlCommand.class);
         commandClassList.add(MemoryCompilerCommand.class);
         commandClassList.add(RedefineCommand.class);
@@ -108,7 +108,7 @@ public class BuiltinCommandPack implements CommandResolver {
         commandClassList.add(VmToolCommand.class);
         commandClassList.add(StopCommand.class);
         commandClassList.add(MemoryCommand.class);
-        commandClassList.add(MemoryLeakCommand.class);
+//        commandClassList.add(MemoryLeakCommand.class);
         commandClassList.add(StartupTimeCommand.class);
         commandClassList.add(PerfCounterCommand.class);
         try {
