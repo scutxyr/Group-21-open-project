@@ -8,7 +8,7 @@ import java.util.List;
  * 用于存储和传递性能指标数据
  *
  * @author Huang Junhao
- */
+ **/
 public class PerformanceData {
     
     private long totalMemory;
