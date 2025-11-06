@@ -1,37 +1,13 @@
-cd math-game
-mvn compile -q
-cd ..
-start "MathGame-Demo" cmd /k "java -cp math-game\target\classes demo.MathGame"
-java -jar arthas-boot.jar
-
-cmd /c 'start "MathGame-Demo" cmd /k "java -cp math-game\target\classes demo.MathGame"'
-java -jar target\arthas-boot-jar-with-dependencies.jar
-
-mvn clean package -D maven.test.skip=true
-
-# 1. 编译 core 模块
-cd C:\Users\Fenix\Desktop\Group-21-open-project\core
-mvn clean compile -DskipTests
-
-# 2. 打包 core 模块（生成 jar）
-mvn package -DskipTests
-
-# 3. 打包 boot 模块
-cd ..\boot
-mvn clean package -DskipTests
-
-# 4. 替换缓存中的 jar
-Copy-Item "..\core\target\arthas-core-shade.jar" "C:\Users\Fenix\.arthas\lib\4.0.5\arthas\arthas-core.jar" -Force
-
 # 1. 编译项目
 cd core
 mvn clean compile package -DskipTests
 
 cd ../boot
-mvn clean package -DskipTests
+mvn package -DskipTests
 
 # 2. 启动测试应用
-java -cp math-game/target/classes demo.MathGame
+cd ..
+cmd /c 'start "MathGame-Demo" cmd /k "java -cp math-game\target\classes demo.MathGame"'
 
 # 3. 运行 Arthas
 java -jar boot/target/arthas-boot-jar-with-dependencies.jar
