@@ -3,6 +3,9 @@ import os
 import re
 import time
 import timeit
+import airtest.aircv as airtest
+import numpy as np
+import cv2
 
 from PIL import Image
 from io import BytesIO
@@ -248,3 +251,17 @@ class DriverWrapper(object):
             c = re.sub(r'\n+', '\n', extracted_text)
             content += c + '\n'
         return content
+
+    def operate_by_image(self, target, operation='CheckElement', threshold=0.8):
+        screenshot_bytes = self.driver.get_screenshot_as_png()
+        screenshot_array = np.frombuffer(screenshot_bytes, dtype=np.uint8)
+        screen = cv2.imdecode(screenshot_array, cv2.IMREAD_COLOR)
+        target = airtest.imread(target)
+
+        if operation == 'CheckElement':
+            assert airtest.find_template(screen, target, threshold=threshold) is not None
+        elif operation == 'ClickElement':
+            click_x, click_y = airtest.find_template(screen, target, threshold=threshold)['result']
+            ActionChains(self.driver).move_by_offset(click_x, click_y).click().perform()
+
+

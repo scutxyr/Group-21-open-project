@@ -44,5 +44,11 @@ class HomePage(object):
     def click_controller(self):
         self.page.click(self.elements.controller)
 
+    def terminal_input(self, operation):
+        self.elements.controller.send_keys(operation)
+
     def get_terminal_text(self) -> str:
         return self.page.get_canvas_content(self.elements.terminal)
+
+    def image_operate(self, target, operation='CheckElement'):
+        self.page.operate_by_image(target=target, operation=operation)
