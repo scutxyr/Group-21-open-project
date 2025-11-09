@@ -263,5 +263,6 @@ class DriverWrapper(object):
         elif operation == 'ClickElement':
             click_x, click_y = airtest.find_template(screen, target, threshold=threshold)['result']
             ActionChains(self.driver).move_by_offset(click_x, click_y).click().perform()
-
+        else:
+            raise ValueError(f"Invalid operation：{operation}")
 
