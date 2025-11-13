@@ -1,3 +1,4 @@
+
 package com.taobao.arthas.core.command.view;
 
 import com.alibaba.arthas.deps.org.slf4j.Logger;
@@ -31,12 +32,12 @@ public class ResultViewResolver {
         try {
             registerView(RowAffectView.class);
 
-            //basic1000
+            // basic1000
             registerView(StatusView.class);
             registerView(VersionView.class);
             registerView(MessageView.class);
             registerView(HelpView.class);
-            //registerView(HistoryView.class);
+            // registerView(HistoryView.class);
             registerView(EchoView.class);
             registerView(CatView.class);
             registerView(Base64View.class);
@@ -49,7 +50,7 @@ public class ResultViewResolver {
             registerView(ResetView.class);
             registerView(ShutdownView.class);
 
-            //klass100
+            // klass100
             registerView(ClassLoaderView.class);
             registerView(DumpClassView.class);
             registerView(GetStaticView.class);
@@ -61,10 +62,10 @@ public class ResultViewResolver {
             registerView(SearchClassView.class);
             registerView(SearchMethodView.class);
 
-            //logger
+            // logger
             registerView(LoggerView.class);
 
-            //monitor2000
+            // monitor2000
             registerView(DashboardView.class);
             registerView(JvmView.class);
             registerView(MemoryView.class);
@@ -92,7 +93,7 @@ public class ResultViewResolver {
     }
 
     public ResultViewResolver registerView(Class modelClass, ResultView view) {
-        //TODO 检查model的type是否重复，避免复制代码带来的bug
+        // TODO 检查model的type是否重复，避免复制代码带来的bug
         this.resultViewMap.put(modelClass, view);
         return this;
     }
@@ -121,15 +122,14 @@ public class ResultViewResolver {
      * @return
      */
     public static <V extends ResultView> Class getModelClass(V view) {
-        //类反射获取子类的draw方法第二个参数的ResultModel具体类型
+        // 类反射获取子类的draw方法第二个参数的ResultModel具体类型
         Class<? extends ResultView> viewClass = view.getClass();
         Method[] declaredMethods = viewClass.getDeclaredMethods();
         for (int i = 0; i < declaredMethods.length; i++) {
             Method method = declaredMethods[i];
             if (method.getName().equals("draw")) {
                 Class<?>[] parameterTypes = method.getParameterTypes();
-                if (parameterTypes.length == 2
-                        && parameterTypes[0] == CommandProcess.class
+                if (parameterTypes.length == 2 && parameterTypes[0] == CommandProcess.class
                         && parameterTypes[1] != ResultModel.class
                         && ResultModel.class.isAssignableFrom(parameterTypes[1])) {
                     return parameterTypes[1];

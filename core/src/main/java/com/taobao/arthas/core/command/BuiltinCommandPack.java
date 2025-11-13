@@ -1,8 +1,8 @@
+
 package com.taobao.arthas.core.command;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 import com.alibaba.arthas.deps.org.slf4j.Logger;
 import com.alibaba.arthas.deps.org.slf4j.LoggerFactory;
@@ -43,6 +43,7 @@ import com.taobao.middleware.cli.annotations.Name;
 
 /**
  * TODO automatically discover the built-in commands.
+ * 
  * @author beiwei30 on 17/11/2016.
  */
 public class BuiltinCommandPack implements CommandResolver {
@@ -77,7 +78,7 @@ public class BuiltinCommandPack implements CommandResolver {
         commandClassList.add(JvmCommand.class);
         commandClassList.add(MemoryCommand.class);
         commandClassList.add(PerfCounterCommand.class);
-        //commandClassList.add(GroovyScriptCommand.class);
+        // commandClassList.add(GroovyScriptCommand.class);
         commandClassList.add(OgnlCommand.class);
         commandClassList.add(MemoryCompilerCommand.class);
         commandClassList.add(RedefineCommand.class);
