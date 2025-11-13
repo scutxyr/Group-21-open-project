@@ -1,0 +1,646 @@
+Arthas JVM Test Report 
+Generated: 2025-11-13_15-50-55 
+MathGame PID: 5756 
+========================================== 
+ 
+========================================== 
+TEST 1: jvm - JVM Runtime Information 
+========================================== 
+[1;31m  ,---.  [1;33m,------. [1;36m,--------.[1;35m,--.  ,--.[1;32m  ,---.  [1;34m ,---.  [0m                         
+[1;31m /  O  \ [1;33m|  .--. '[1;36m'--.  .--'[1;35m|  '--'  |[1;32m /  O  \ [1;34m'   .-' [0m                         
+[1;31m|  .-.  |[1;33m|  '--'.'[1;36m   |  |   [1;35m|  .--.  |[1;32m|  .-.  |[1;34m`.  `-. [0m                         
+[1;31m|  | |  |[1;33m|  |\  \ [1;36m   |  |   [1;35m|  |  |  |[1;32m|  | |  |[1;34m.-'    |[0m                         
+[1;31m`--' `--'[1;33m`--' '--'[1;36m   `--'   [1;35m`--'  `--'[1;32m`--' `--'[1;34m`-----' [0m                         
+
+wiki         https://arthas.aliyun.com/doc                                      
+tutorials    https://arthas.aliyun.com/doc/arthas-tutorials.html                
+version      4.0.5-local                                                        
+main_class   demo.MathGame                                                      
+pid          9520                                                               
+start_time   2025-11-13 15:32:54.310                                            
+current_time 2025-11-13 15:36:49.840                                            
+
+[arthas@9520]$ jvm | plaintext
+ RUNTIME                                                                        
+--------------------------------------------------------------------------------
+ MACHINE-NAME           9520@DESKTOP-C5NN456                                    
+ JVM-START-TIME         2025-11-13 15:32:54                                     
+ MANAGEMENT-SPEC-VERSI  1.2                                                     
+ ON                                                                             
+ SPEC-NAME              Java Virtual Machine Specification                      
+ SPEC-VENDOR            Oracle Corporation                                      
+ SPEC-VERSION           1.8                                                     
+ VM-NAME                OpenJDK 64-Bit Server VM                                
+ VM-VENDOR              Temurin                                                 
+ VM-VERSION             25.462-b08                                              
+ INPUT-ARGUMENTS        []                                                      
+ CLASS-PATH             math-game\target\classes                                
+ BOOT-CLASS-PATH        C:\Users\jz\jdk8\jdk-8.0.462.8-hotspot\jre\lib          
+                        esources.jar;C:\Users\jz\jdk8\jdk-8.0.462.8-hotspot\jre 
+                        \lib                                                    
+                        t.jar;C:\Users\jz\jdk8\jdk-8.0.462.8-hotspot\jre\lib\su 
+                        nrsasign.jar;C:\Users\jz\jdk8\jdk-8.0.462.8-hotspot\jre 
+                        \lib\jsse.jar;C:\Users\jz\jdk8\jdk-8.0.462.8-hotspot\jr 
+                        e\lib\jce.jar;C:\Users\jz\jdk8\jdk-8.0.462.8-hotspot\jr 
+                        e\lib\charsets.jar;C:\Users\jz\jdk8\jdk-8.0.462.8-hotsp 
+                        ot\jre\lib\jfr.jar;C:\Users\jz\jdk8\jdk-8.0.462.8-hotsp 
+                        ot\jre\classes                                          
+ LIBRARY-PATH           C:\Users\jz\jdk8\jdk-8.0.462.8-hotspot\bin;C:\windows\S 
+                        un\Java\bin;C:\windows\system32;C:\windows;C:\Users\jz\ 
+                        jdk8\jdk-8.0.462.8-hotspot\bin;C:\Program Files\NVIDIA  
+                        GPU Computing Toolkit\CUDA\v12.8\bin;C:\Program Files\N 
+                        VIDIA GPU Computing Toolkit\CUDA\v12.8\libnvvp;C:\Progr 
+                        am Files\Common Files\Oracle\Java\javapath;C:\windows\s 
+                        ystem32;C:\windows;C:\windows\System32\Wbem;C:\windows\ 
+                        System32\WindowsPowerShell\v1.0\;C:\windows\System32\Op 
+                        enSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\ 
+                        Common;C:\Program Files\NVIDIA Corporation\NVIDIA App\N 
+                        vDLISR;C:\Program Files\dotnet\;C:\Program Files\Git\cm 
+                        d;C:\Users\jz\mvn\apache-maven-3.9.11\bin;C:\Users\jz\S 
+                        eProject\allure-2.35.1\bin;C:\Program Files\Tesseract-O 
+                        CR;C:\Program Files\NVIDIA Corporation\Nsight Compute 2 
+                        025.1.1\;C:\msys64\mingw64\bin;C:\Users\jz\AppData\Loca 
+                        l\Microsoft\WindowsApps;D:\Microsoft VS Code\bin;C:\msy 
+                        s64\mingw64\bin;c:\Users\jz\.vscode\extensions\ms-pytho 
+                        n.debugpy-2025.14.1-win32-x64\bundled\scripts\noConfigS 
+                        criptsc:\Users\jz\.vscode\extensions\vscjava.vscode-jav 
+                        a-debug-0.58.3\bundled\scripts\noConfigScripts;c:\Users 
+                        \jz\AppData\Roaming\Code\User\globalStorage\github.copi 
+                        lot-chat\debugCommand;.                                 
+                                                                                
+--------------------------------------------------------------------------------
+ CLASS-LOADING                                                                  
+--------------------------------------------------------------------------------
+ LOADED-CLASS-COUNT     6025                                                    
+ TOTAL-LOADED-CLASS-CO  6025                                                    
+ UNT                                                                            
+ UNLOADED-CLASS-COUNT   0                                                       
+ IS-VERBOSE             false                                                   
+                                                                                
+--------------------------------------------------------------------------------
+ COMPILATION                                                                    
+--------------------------------------------------------------------------------
+ NAME                   HotSpot 64-Bit Tiered Compilers                         
+ TOTAL-COMPILE-TIME     3891                                                    
+ [time (ms)]                                                                    
+                                                                                
+--------------------------------------------------------------------------------
+ GARBAGE-COLLECTORS                                                             
+--------------------------------------------------------------------------------
+ PS Scavenge            name : PS Scavenge                                      
+ [count/time (ms)]      collectionCount : 5                                     
+                        collectionTime : 53                                     
+ PS MarkSweep           name : PS MarkSweep                                     
+ [count/time (ms)]      collectionCount : 2                                     
+                        collectionTime : 74                                     
+                                                                                
+--------------------------------------------------------------------------------
+ MEMORY-MANAGERS                                                                
+--------------------------------------------------------------------------------
+ CodeCacheManager       Code Cache                                              
+ Metaspace Manager      Metaspace                                               
+                        Compressed Class Space                                  
+ PS Scavenge            PS Eden Space                                           
+                        PS Survivor Space                                       
+ PS MarkSweep           PS Eden Space                                           
+                        PS Survivor Space                                       
+                        PS Old Gen                                              
+                                                                                
+--------------------------------------------------------------------------------
+ MEMORY                                                                         
+--------------------------------------------------------------------------------
+ HEAP-MEMORY-USAGE      init : 257949696(246.0 MiB)                             
+ [memory in bytes]      used : 59841520(57.1 MiB)                               
+                        committed : 242745344(231.5 MiB)                        
+                        max : 3648520192(3.4 GiB)                               
+ NO-HEAP-MEMORY-USAGE   init : 2555904(2.4 MiB)                                 
+ [memory in bytes]      used : 52202728(49.8 MiB)                               
+                        committed : 53633024(51.1 MiB)                          
+                        max : -1(-1 B)                                          
+ PENDING-FINALIZE-COUN  0                                                       
+ T                                                                              
+                                                                                
+--------------------------------------------------------------------------------
+ OPERATING-SYSTEM                                                               
+--------------------------------------------------------------------------------
+ OS                     Windows 11                                              
+ ARCH                   amd64                                                   
+ PROCESSORS-COUNT       32                                                      
+ LOAD-AVERAGE           -1.0                                                    
+ VERSION                10.0                                                    
+                                                                                
+--------------------------------------------------------------------------------
+ THREAD                                                                         
+--------------------------------------------------------------------------------
+ COUNT                  29                                                      
+ DAEMON-COUNT           28                                                      
+ PEAK-COUNT             198                                                     
+ STARTED-COUNT          237                                                     
+ DEADLOCK-COUNT         0                                                       
+                                                                                
+--------------------------------------------------------------------------------
+ FILE-DESCRIPTOR                                                                
+--------------------------------------------------------------------------------
+ MAX-FILE-DESCRIPTOR-C  -1                                                      
+ OUNT                                                                           
+ OPEN-FILE-DESCRIPTOR-  -1                                                      
+ COUNT                                                                          
+                                                                                
+[arthas@9520]$ 
+ 
+========================================== 
+TEST 2: memory - Memory Usage Details 
+========================================== 
+[1;31m  ,---.  [1;33m,------. [1;36m,--------.[1;35m,--.  ,--.[1;32m  ,---.  [1;34m ,---.  [0m                         
+[1;31m /  O  \ [1;33m|  .--. '[1;36m'--.  .--'[1;35m|  '--'  |[1;32m /  O  \ [1;34m'   .-' [0m                         
+[1;31m|  .-.  |[1;33m|  '--'.'[1;36m   |  |   [1;35m|  .--.  |[1;32m|  .-.  |[1;34m`.  `-. [0m                         
+[1;31m|  | |  |[1;33m|  |\  \ [1;36m   |  |   [1;35m|  |  |  |[1;32m|  | |  |[1;34m.-'    |[0m                         
+[1;31m`--' `--'[1;33m`--' '--'[1;36m   `--'   [1;35m`--'  `--'[1;32m`--' `--'[1;34m`-----' [0m                         
+
+wiki         https://arthas.aliyun.com/doc                                      
+tutorials    https://arthas.aliyun.com/doc/arthas-tutorials.html                
+version      4.0.5-local                                                        
+main_class   demo.MathGame                                                      
+pid          9520                                                               
+start_time   2025-11-13 15:32:54.310                                            
+current_time 2025-11-13 15:36:49.840                                            
+
+[arthas@9520]$ memory | plaintext
+Memory                            used        total      max         usage      
+heap                              58M         231M       3479M       1.70%      
+ps_eden_space                     36M         119M       1274M       2.84%      
+ps_survivor_space                 0K          10240K     10240K      0.00%      
+ps_old_gen                        22M         102M       2609M       0.88%      
+nonheap                           49M         51M        -1          97.41%     
+code_cache                        11M         11M        240M        4.70%      
+metaspace                         34M         35M        -1          97.19%     
+compressed_class_space            4M          4M         1024M       0.41%      
+direct                            0K          0K         -           0.00%      
+mapped                            0K          0K         -           0.00%      
+[arthas@9520]$ 
+ 
+========================================== 
+TEST 3: perfcounter - JVM Performance Counters 
+========================================== 
+[1;31m  ,---.  [1;33m,------. [1;36m,--------.[1;35m,--.  ,--.[1;32m  ,---.  [1;34m ,---.  [0m                         
+[1;31m /  O  \ [1;33m|  .--. '[1;36m'--.  .--'[1;35m|  '--'  |[1;32m /  O  \ [1;34m'   .-' [0m                         
+[1;31m|  .-.  |[1;33m|  '--'.'[1;36m   |  |   [1;35m|  .--.  |[1;32m|  .-.  |[1;34m`.  `-. [0m                         
+[1;31m|  | |  |[1;33m|  |\  \ [1;36m   |  |   [1;35m|  |  |  |[1;32m|  | |  |[1;34m.-'    |[0m                         
+[1;31m`--' `--'[1;33m`--' '--'[1;36m   `--'   [1;35m`--'  `--'[1;32m`--' `--'[1;34m`-----' [0m                         
+
+wiki         https://arthas.aliyun.com/doc                                      
+tutorials    https://arthas.aliyun.com/doc/arthas-tutorials.html                
+version      4.0.5-local                                                        
+main_class   demo.MathGame                                                      
+pid          9520                                                               
+start_time   2025-11-13 15:32:54.310                                            
+current_time 2025-11-13 15:36:49.840                                            
+
+[arthas@9520]$ perfcounter | plaintext
+ Name                            Value                                          
+--------------------------------------------------------------------------------
+ java.ci.totalTime               39191515                                       
+ java.cls.loadedClasses          6025                                           
+ java.cls.sharedLoadedClasses    0                                              
+ java.cls.sharedUnloadedClasses  0                                              
+ java.cls.unloadedClasses        0                                              
+ java.property.java.class.path   math-game\target\classes                       
+ java.property.java.endorsed.di  C:\Users\jz\jdk8\jdk-8.0.462.8-hotspot\jre\lib 
+ rs                              \endorsed                                      
+ java.property.java.ext.dirs     C:\Users\jz\jdk8\jdk-8.0.462.8-hotspot\jre\lib 
+                                 \ext;C:\windows\Sun\Java\lib\ext               
+ java.property.java.home         C:\Users\jz\jdk8\jdk-8.0.462.8-hotspot\jre     
+ java.property.java.library.pat  C:\Users\jz\jdk8\jdk-8.0.462.8-hotspot\bin;C:\ 
+ h                               windows\Sun\Java\bin;C:\windows\system32;C:\wi 
+                                 ndows;C:\Users\jz\jdk8\jdk-8.0.462.8-hotspot\b 
+                                 in;C:\Program Files\NVIDIA GPU Computing Toolk 
+                                 it\CUDA\v12.8\bin;C:\Program Files\NVIDIA GPU  
+                                 Computing Toolkit\CUDA\v12.8\libnvvp;C:\Progra 
+                                 m Files\Common Files\Oracle\Java\javapath;C:\w 
+                                 indows\system32;C:\windows;C:\windows\System32 
+                                 \Wbem;C:\windows\System32\WindowsPowerShell\v1 
+                                 .0\;C:\windows\System32\OpenSSH\;C:\Program Fi 
+                                 les (x86)\NVIDIA Corporation\PhysX\Common;C:\P 
+                                 rogram Files\NVIDIA Corporation\NVIDIA App\NvD 
+                                 LISR;C:\Program Files\dotnet\;C:\Program Files 
+                                 \Git\cmd;C:\Users\jz\mvn\apache-maven-3.9.11\b 
+                                 in;C:\Users\jz\SeProject\allure-2.35.1\bin;C:\ 
+                                 Program Files\Tesseract-OCR;C:\Program Files\N 
+                                 VIDIA Corporation\Nsight Compute 2025.1.1\;C:\ 
+                                 msys64\mingw64\bin;C:\Users\jz\AppData\Local\M 
+                                 icrosoft\WindowsApps;D:\Microsoft VS Code\bin; 
+                                 C:\msys64\mingw64\bin;c:\Users\jz\.vscode\exte 
+                                 nsions\ms-python.debugpy-2025.14.1-win32-x64\b 
+                                 undled\scripts\noConfigScriptsc:\Users\jz\.vsc 
+                                 ode\extensio                                   
+ java.property.java.version      1.8.0_462                                      
+ java.property.java.vm.info      mixed mode                                     
+ java.property.java.vm.name      OpenJDK 64-Bit Server VM                       
+ java.property.java.vm.specific  Java Virtual Machine Specification             
+ ation.name                                                                     
+ java.property.java.vm.specific  Oracle Corporation                             
+ ation.vendor                                                                   
+ java.property.java.vm.specific  1.8                                            
+ ation.version                                                                  
+ java.property.java.vm.vendor    Temurin                                        
+ java.property.java.vm.version   25.462-b08                                     
+ java.rt.vmArgs                                                                 
+ java.rt.vmFlags                                                                
+ java.threads.daemon             30                                             
+ java.threads.live               31                                             
+ java.threads.livePeak           198                                            
+ java.threads.started            239                                            
+ sun.ci.compilerThread.0.compil  42                                             
+ es                                                                             
+ sun.ci.compilerThread.0.method  sun/management/counter/perf/PerfDataEntry <ini 
+                                 t>                                             
+ sun.ci.compilerThread.0.time    159                                            
+ sun.ci.compilerThread.0.type    1                                              
+ sun.ci.compilerThread.1.compil  26                                             
+ es                                                                             
+ sun.ci.compilerThread.1.method                                                 
+ sun.ci.compilerThread.1.time    113                                            
+ sun.ci.compilerThread.1.type    1                                              
+ sun.ci.compilerThread.10.compi  588                                            
+ les                                                                            
+ sun.ci.compilerThread.10.metho                                                 
+ d                                                                              
+ sun.ci.compilerThread.10.time   1583                                           
+ sun.ci.compilerThread.10.type   1                                              
+ sun.ci.compilerThread.11.compi  590                                            
+ les                                                                            
+ sun.ci.compilerThread.11.metho                                                 
+ d                                                                              
+ sun.ci.compilerThread.11.time   1542                                           
+ sun.ci.compilerThread.11.type   1                                              
+ sun.ci.compilerThread.12.compi  599                                            
+ les                                                                            
+ sun.ci.compilerThread.12.metho                                                 
+ d                                                                              
+ sun.ci.compilerThread.12.time   1634                                           
+ sun.ci.compilerThread.12.type   1                                              
+ sun.ci.compilerThread.13.compi  581                                            
+ les                                                                            
+ sun.ci.compilerThread.13.metho                                                 
+ d                                                                              
+ sun.ci.compilerThread.13.time   1728                                           
+ sun.ci.compilerThread.13.type   1                                              
+ sun.ci.compilerThread.14.compi  606                                            
+ les                                                                            
+ sun.ci.compilerThread.14.metho                                                 
+ d                                                                              
+ sun.ci.compilerThread.14.time   1556                                           
+ sun.ci.compilerThread.14.type   1                                              
+ sun.ci.compilerThread.2.compil  37                                             
+ es                                                                             
+ sun.ci.compilerThread.2.method                                                 
+ sun.ci.compilerThread.2.time    125                                            
+ sun.ci.compilerThread.2.type    1                                              
+ sun.ci.compilerThread.3.compil  29                                             
+ es                                                                             
+ sun.ci.compilerThread.3.method                                                 
+ sun.ci.compilerThread.3.time    97                                             
+ sun.ci.compilerThread.3.type    1                                              
+ sun.ci.compilerThread.4.compil  33                                             
+ es                                                                             
+ sun.ci.compilerThread.4.method                                                 
+ sun.ci.compilerThread.4.time    108                                            
+ sun.ci.compilerThread.4.type    1                                              
+ sun.ci.compilerThread.5.compil  41                                             
+ es                                                                             
+ sun.ci.compilerThread.5.method                                                 
+ sun.ci.compilerThread.5.time    144                                            
+ sun.ci.compilerThread.5.type    1                                              
+ sun.ci.compilerThread.6.compil  39                                             
+ es                                                                             
+ sun.ci.compilerThread.6.method                                                 
+ sun.ci.compilerThread.6.time    147                                            
+ sun.ci.compilerThread.6.type    1                                              
+ sun.ci.compilerThread.7.compil  37                                             
+ es                                                                             
+ sun.ci.compilerThread.7.method                                                 
+ sun.ci.compilerThread.7.time    135                                            
+ sun.ci.compilerThread.7.type    1                                              
+ sun.ci.compilerThread.8.compil  46                                             
+ es                                                                             
+ sun.ci.compilerThread.8.method                                                 
+ sun.ci.compilerThread.8.time    164                                            
+ sun.ci.compilerThread.8.type    1                                              
+ sun.ci.compilerThread.9.compil  37                                             
+ es                                                                             
+ sun.ci.compilerThread.9.method                                                 
+ sun.ci.compilerThread.9.time    125                                            
+ sun.ci.compilerThread.9.type    1                                              
+ sun.ci.lastFailedMethod                                                        
+ sun.ci.lastFailedType           0                                              
+ sun.ci.lastInvalidatedMethod                                                   
+ sun.ci.lastInvalidatedType      0                                              
+ sun.ci.lastMethod               java/nio/DirectByteBuffer getInt               
+ sun.ci.lastSize                 70                                             
+ sun.ci.lastType                 1                                              
+ sun.ci.nmethodCodeSize          4575872                                        
+ sun.ci.nmethodSize              7531448                                        
+ sun.ci.osrBytes                 10914                                          
+ sun.ci.osrCompiles              22                                             
+ sun.ci.osrTime                  2834029                                        
+ sun.ci.standardBytes            342569                                         
+ sun.ci.standardCompiles         3308                                           
+ sun.ci.standardTime             36374595                                       
+ sun.ci.threads                  15                                             
+ sun.ci.totalBailouts            0                                              
+ sun.ci.totalCompiles            3330                                           
+ sun.ci.totalInvalidates         0                                              
+ sun.classloader.findClassTime   43406400                                       
+ sun.classloader.findClasses     64                                             
+ sun.classloader.parentDelegati  5382900                                        
+ onTime                                                                         
+ sun.cls.appClassBytes           15303907                                       
+ sun.cls.appClassLoadCount       4137                                           
+ sun.cls.appClassLoadTime        11343201                                       
+ sun.cls.appClassLoadTime.self   5532599                                        
+ sun.cls.classInitTime           41344495                                       
+ sun.cls.classInitTime.self      33316133                                       
+ sun.cls.classLinkedTime         8228029                                        
+ sun.cls.classLinkedTime.self    1181773                                        
+ sun.cls.classVerifyTime         7039274                                        
+ sun.cls.classVerifyTime.self    2509754                                        
+ sun.cls.defineAppClassTime      6417670                                        
+ sun.cls.defineAppClassTime.sel  275165                                         
+ f                                                                              
+ sun.cls.defineAppClasses        3323                                           
+ sun.cls.initializedClasses      4121                                           
+ sun.cls.isUnsyncloadClassSet    0                                              
+ sun.cls.jniDefineClassNoLockCa  22                                             
+ lls                                                                            
+ sun.cls.jvmDefineClassNoLockCa  87                                             
+ lls                                                                            
+ sun.cls.jvmFindLoadedClassNoLo  1182                                           
+ ckCalls                                                                        
+ sun.cls.linkedClasses           4778                                           
+ sun.cls.loadInstanceClassFailR  0                                              
+ ate                                                                            
+ sun.cls.loadedBytes             12282728                                       
+ sun.cls.lookupSysClassTime      940596                                         
+ sun.cls.methodBytes             5736008                                        
+ sun.cls.nonSystemLoaderLockCon  22                                             
+ tentionRate                                                                    
+ sun.cls.parseClassTime          8711935                                        
+ sun.cls.parseClassTime.self     7600117                                        
+ sun.cls.sharedClassLoadTime     1578                                           
+ sun.cls.sharedLoadedBytes       0                                              
+ sun.cls.sharedUnloadedBytes     0                                              
+ sun.cls.sysClassBytes           9265852                                        
+ sun.cls.sysClassLoadTime        3969821                                        
+ sun.cls.systemLoaderLockConten  0                                              
+ tionRate                                                                       
+ sun.cls.time                    51459626                                       
+ sun.cls.unloadedBytes           0                                              
+ sun.cls.unsafeDefineClassCalls  143                                            
+ sun.cls.verifiedClasses         4775                                           
+ sun.gc.cause                    No GC                                          
+ sun.gc.collector.0.invocations  5                                              
+ sun.gc.collector.0.lastEntryTi  2498276586                                     
+ me                                                                             
+ sun.gc.collector.0.lastExitTim  2498410646                                     
+ e                                                                              
+ sun.gc.collector.0.name         PSScavenge                                     
+ sun.gc.collector.0.time         533198                                         
+ sun.gc.collector.1.invocations  2                                              
+ sun.gc.collector.1.lastEntryTi  2498411228                                     
+ me                                                                             
+ sun.gc.collector.1.lastExitTim  2498839877                                     
+ e                                                                              
+ sun.gc.collector.1.name         PSParallelCompact                              
+ sun.gc.collector.1.time         749985                                         
+ sun.gc.compressedclassspace.ca  4587520                                        
+ pacity                                                                         
+ sun.gc.compressedclassspace.ma  1073741824                                     
+ xCapacity                                                                      
+ sun.gc.compressedclassspace.mi  0                                              
+ nCapacity                                                                      
+ sun.gc.compressedclassspace.us  4343632                                        
+ ed                                                                             
+ sun.gc.generation.0.capacity    275775488                                      
+ sun.gc.generation.0.maxCapacit  1367867392                                     
+ y                                                                              
+ sun.gc.generation.0.minCapacit  85983232                                       
+ y                                                                              
+ sun.gc.generation.0.name        new                                            
+ sun.gc.generation.0.space.0.ca  125304832                                      
+ pacity                                                                         
+ sun.gc.generation.0.space.0.in  0                                              
+ itCapacity                                                                     
+ sun.gc.generation.0.space.0.ma  1366818816                                     
+ xCapacity                                                                      
+ sun.gc.generation.0.space.0.na  eden                                           
+ me                                                                             
+ sun.gc.generation.0.space.0.us  38527592                                       
+ ed                                                                             
+ sun.gc.generation.0.space.1.ca  20971520                                       
+ pacity                                                                         
+ sun.gc.generation.0.space.1.in  0                                              
+ itCapacity                                                                     
+ sun.gc.generation.0.space.1.ma  455606272                                      
+ xCapacity                                                                      
+ sun.gc.generation.0.space.1.na  s0                                             
+ me                                                                             
+ sun.gc.generation.0.space.1.us  0                                              
+ ed                                                                             
+ sun.gc.generation.0.space.2.ca  10485760                                       
+ pacity                                                                         
+ sun.gc.generation.0.space.2.in  0                                              
+ itCapacity                                                                     
+ sun.gc.generation.0.space.2.ma  455606272                                      
+ xCapacity                                                                      
+ sun.gc.generation.0.space.2.na  s1                                             
+ me                                                                             
+ sun.gc.generation.0.space.2.us  0                                              
+ ed                                                                             
+ sun.gc.generation.0.spaces      3                                              
+ sun.gc.generation.1.capacity    106954752                                      
+ sun.gc.generation.1.maxCapacit  2736259072                                     
+ y                                                                              
+ sun.gc.generation.1.minCapacit  171966464                                      
+ y                                                                              
+ sun.gc.generation.1.name        old                                            
+ sun.gc.generation.1.space.0.ca  106954752                                      
+ pacity                                                                         
+ sun.gc.generation.1.space.0.in  171966464                                      
+ itCapacity                                                                     
+ sun.gc.generation.1.space.0.ma  2736259072                                     
+ xCapacity                                                                      
+ sun.gc.generation.1.space.0.na  old                                            
+ me                                                                             
+ sun.gc.generation.1.space.0.us  23974304                                       
+ ed                                                                             
+ sun.gc.generation.1.spaces      1                                              
+ sun.gc.lastCause                Metadata GC Threshold                          
+ sun.gc.metaspace.capacity       36265984                                       
+ sun.gc.metaspace.maxCapacity    1107296256                                     
+ sun.gc.metaspace.minCapacity    0                                              
+ sun.gc.metaspace.used           35316424                                       
+ sun.gc.policy.avgBaseFootprint  268435456                                      
+ sun.gc.policy.avgMajorInterval  124938                                         
+ Time                                                                           
+ sun.gc.policy.avgMajorPauseTim  36                                             
+ e                                                                              
+ sun.gc.policy.avgMinorInterval  47653                                          
+ Time                                                                           
+ sun.gc.policy.avgMinorPauseTim  10                                             
+ e                                                                              
+ sun.gc.policy.avgOldLive        15373791                                       
+ sun.gc.policy.avgPretenuredPad  0                                              
+ dedAvg                                                                         
+ sun.gc.policy.avgPromotedAvg    3062062                                        
+ sun.gc.policy.avgPromotedDev    1867136                                        
+ sun.gc.policy.avgPromotedPadde  8663471                                        
+ dAvg                                                                           
+ sun.gc.policy.avgSurvivedAvg    12873319                                       
+ sun.gc.policy.avgSurvivedDev    2691086                                        
+ sun.gc.policy.avgSurvivedPadde  20946578                                       
+ dAvg                                                                           
+ sun.gc.policy.avgYoungLive      7032041                                        
+ sun.gc.policy.boundaryMoved     0                                              
+ sun.gc.policy.changeOldGenForM  0                                              
+ ajPauses                                                                       
+ sun.gc.policy.changeOldGenForM  0                                              
+ inPauses                                                                       
+ sun.gc.policy.changeYoungGenFo  0                                              
+ rMajPauses                                                                     
+ sun.gc.policy.changeYoungGenFo  0                                              
+ rMinPauses                                                                     
+ sun.gc.policy.collectors        2                                              
+ sun.gc.policy.decideAtFullGc    8                                              
+ sun.gc.policy.decreaseForFootp  0                                              
+ rint                                                                           
+ sun.gc.policy.decrementTenurin  0                                              
+ gThresholdForGcCost                                                            
+ sun.gc.policy.decrementTenurin  0                                              
+ gThresholdForSurvivorLimit                                                     
+ sun.gc.policy.desiredSurvivorS  20971520                                       
+ ize                                                                            
+ sun.gc.policy.edenSize          242221056                                      
+ sun.gc.policy.freeSpace         316145664                                      
+ sun.gc.policy.fullFollowsScave  0                                              
+ nge                                                                            
+ sun.gc.policy.gcTimeLimitExcee  0                                              
+ ded                                                                            
+ sun.gc.policy.generations       3                                              
+ sun.gc.policy.increaseOldGenFo  4                                              
+ rThroughput                                                                    
+ sun.gc.policy.increaseYoungGen  5                                              
+ ForThroughput                                                                  
+ sun.gc.policy.incrementTenurin  0                                              
+ gThresholdForGcCost                                                            
+ sun.gc.policy.liveAtLastFullGc  23974304                                       
+ sun.gc.policy.liveSpace         290841280                                      
+ sun.gc.policy.majorCollectionS  0                                              
+ lope                                                                           
+ sun.gc.policy.majorGcCost       0                                              
+ sun.gc.policy.majorPauseOldSlo  3273                                           
+ pe                                                                             
+ sun.gc.policy.majorPauseYoungS  115                                            
+ lope                                                                           
+ sun.gc.policy.maxTenuringThres  15                                             
+ hold                                                                           
+ sun.gc.policy.minorCollectionS  0                                              
+ lope                                                                           
+ sun.gc.policy.minorGcCost       1                                              
+ sun.gc.policy.minorPauseOldSlo  -289                                           
+ pe                                                                             
+ sun.gc.policy.minorPauseTime    12                                             
+ sun.gc.policy.minorPauseYoungS  -19                                            
+ lope                                                                           
+ sun.gc.policy.mutatorCost       98                                             
+ sun.gc.policy.name              ParScav:MSC                                    
+ sun.gc.policy.oldCapacity       106954752                                      
+ sun.gc.policy.oldEdenSize       124256256                                      
+ sun.gc.policy.oldPromoSize      68681728                                       
+ sun.gc.policy.promoSize         73924608                                       
+ sun.gc.policy.promoted          7842304                                        
+ sun.gc.policy.scavengeSkipped   0                                              
+ sun.gc.policy.survived          10453056                                       
+ sun.gc.policy.survivorOverflow  1                                              
+ ed                                                                             
+ sun.gc.policy.tenuringThreshol  6                                              
+ d                                                                              
+ sun.gc.policy.youngCapacity     135790592                                      
+ sun.gc.tlab.alloc               1311959                                        
+ sun.gc.tlab.allocThreads        14                                             
+ sun.gc.tlab.fastWaste           1417                                           
+ sun.gc.tlab.fills               139                                            
+ sun.gc.tlab.gcWaste             419538                                         
+ sun.gc.tlab.maxFastWaste        1052                                           
+ sun.gc.tlab.maxFills            72                                             
+ sun.gc.tlab.maxGcWaste          65614                                          
+ sun.gc.tlab.maxSlowAlloc        85                                             
+ sun.gc.tlab.maxSlowWaste        1344                                           
+ sun.gc.tlab.slowAlloc           150                                            
+ sun.gc.tlab.slowWaste           2303                                           
+ sun.os.hrt.frequency            10000000                                       
+ sun.os.hrt.ticks                10868863220                                    
+ sun.property.sun.boot.class.pa  C:\Users\jz\jdk8\jdk-8.0.462.8-hotspot\jre\lib 
+ th                              esources.jar;C:\Users\jz\jdk8\jdk-8.0.462.8-ho 
+                                 tspot\jre\lib                                  
+                                 t.jar;C:\Users\jz\jdk8\jdk-8.0.462.8-hotspot\j 
+                                 re\lib\sunrsasign.jar;C:\Users\jz\jdk8\jdk-8.0 
+                                 .462.8-hotspot\jre\lib\jsse.jar;C:\Users\jz\jd 
+                                 k8\jdk-8.0.462.8-hotspot\jre\lib\jce.jar;C:\Us 
+                                 ers\jz\jdk8\jdk-8.0.462.8-hotspot\jre\lib\char 
+                                 sets.jar;C:\Users\jz\jdk8\jdk-8.0.462.8-hotspo 
+                                 t\jre\lib\jfr.jar;C:\Users\jz\jdk8\jdk-8.0.462 
+                                 .8-hotspot\jre\classes                         
+ sun.property.sun.boot.library.  C:\Users\jz\jdk8\jdk-8.0.462.8-hotspot\jre\bin 
+ path                                                                           
+ sun.rt._sync_ContendedLockAtte  104                                            
+ mpts                                                                           
+ sun.rt._sync_Deflations         85                                             
+ sun.rt._sync_EmptyNotification  0                                              
+ s                                                                              
+ sun.rt._sync_FailedSpins        0                                              
+ sun.rt._sync_FutileWakeups      9                                              
+ sun.rt._sync_Inflations         88                                             
+ sun.rt._sync_MonExtant          640                                            
+ sun.rt._sync_MonInCirculation   0                                              
+ sun.rt._sync_MonScavenged       0                                              
+ sun.rt._sync_Notifications      21                                             
+ sun.rt._sync_Parks              59                                             
+ sun.rt._sync_PrivateA           0                                              
+ sun.rt._sync_PrivateB           0                                              
+ sun.rt._sync_SlowEnter          0                                              
+ sun.rt._sync_SlowExit           0                                              
+ sun.rt._sync_SlowNotify         0                                              
+ sun.rt._sync_SlowNotifyAll      0                                              
+ sun.rt._sync_SuccessfulSpins    0                                              
+ sun.rt.applicationTime          10865457462                                    
+ sun.rt.createVmBeginTime        1763019174224                                  
+ sun.rt.createVmEndTime          1763019174329                                  
+ sun.rt.internalVersion          OpenJDK 64-Bit Server VM (25.462-b08) for wind 
+                                 ows-amd64 JRE (1.8.0_462-b08), built on Jul 16 
+                                  2025 11:19:14 by "ContainerUser" with unknown 
+                                  MS VC++:1937                                  
+ sun.rt.interruptedBeforeIO      0                                              
+ sun.rt.interruptedDuringIO      0                                              
+ sun.rt.javaCommand              demo.MathGame                                  
+ sun.rt.jvmCapabilities          1100000000000000000000000000000000000000000000 
+                                 000000000000000000                             
+ sun.rt.jvmVersion               419548680                                      
+ sun.rt.safepointSyncTime        302557                                         
+ sun.rt.safepointTime            2012409                                        
+ sun.rt.safepoints               509                                            
+ sun.rt.threadInterruptSignaled  0                                              
+ sun.rt.vmInitDoneTime           1763019174310                                  
+ sun.threads.vmOperationTime     1425934                                        
+ sun.urlClassLoader.readClassBy  302018500                                      
+ tesTime                                                                        
+ sun.zip.zipFile.openTime        5937600                                        
+ sun.zip.zipFiles                17                                             
+[arthas@9520]$ 
+ 
+========================================== 
+Test Summary 
+========================================== 
+All 3 tests completed 
+- jvm: PASS 
+- memory: PASS 
+- perfcounter: PASS 
