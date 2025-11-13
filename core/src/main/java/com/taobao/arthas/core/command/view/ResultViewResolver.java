@@ -3,6 +3,7 @@ package com.taobao.arthas.core.command.view;
 import com.alibaba.arthas.deps.org.slf4j.Logger;
 import com.alibaba.arthas.deps.org.slf4j.LoggerFactory;
 import com.taobao.arthas.core.command.model.ResultModel;
+import com.taobao.arthas.core.command.view.ConfigCheckerView;
 import com.taobao.arthas.core.shell.command.CommandProcess;
 
 import java.lang.reflect.Method;
@@ -66,6 +67,7 @@ public class ResultViewResolver {
 
             //monitor2000
             registerView(DashboardView.class);
+            registerView(ConfigCheckerView.class);
             registerView(JvmView.class);
             registerView(MemoryView.class);
             registerView(MBeanView.class);

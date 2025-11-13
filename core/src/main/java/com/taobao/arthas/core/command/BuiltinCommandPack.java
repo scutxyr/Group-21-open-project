@@ -7,6 +7,7 @@ import java.util.List;
 import com.alibaba.arthas.deps.org.slf4j.Logger;
 import com.alibaba.arthas.deps.org.slf4j.LoggerFactory;
 import com.taobao.arthas.core.command.basic1000.*;
+import com.taobao.arthas.core.shell.command.impl.ConfigCheckerCommand;
 import com.taobao.arthas.core.command.hidden.JulyCommand;
 import com.taobao.arthas.core.command.hidden.ThanksCommand;
 import com.taobao.arthas.core.command.klass100.ClassLoaderCommand;
@@ -59,6 +60,7 @@ public class BuiltinCommandPack implements CommandResolver {
     private void initCommands(List<String> disabledCommands) {
         List<Class<? extends AnnotatedCommand>> commandClassList = new ArrayList<Class<? extends AnnotatedCommand>>(33);
         commandClassList.add(HelpCommand.class);
+        commandClassList.add(ConfigCheckerCommand.class);
         commandClassList.add(AuthCommand.class);
         commandClassList.add(KeymapCommand.class);
         commandClassList.add(SearchClassCommand.class);
