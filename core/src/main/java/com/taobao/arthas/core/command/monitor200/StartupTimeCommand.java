@@ -1,3 +1,4 @@
+
 package com.taobao.arthas.core.command.monitor200;
 
 import com.taobao.arthas.core.command.model.StartupTimeModel;
@@ -18,11 +19,10 @@ import java.lang.management.RuntimeMXBean;
 
 @Name("startup-time")
 @Summary("Display JVM startup time and application uptime statistics")
-@Description("Show detailed information about JVM startup time, application uptime, and related statistics.\n" +
-        "\nExamples:\n" +
-        "  startup-time                    # Show basic startup information\n" +
-        "  startup-time -d                 # Show detailed information\n" +
-        "  startup-time --format human     # Human readable format")
+@Description("Show detailed information about JVM startup time, application uptime, and related statistics.\n"
+        + "\nExamples:\n" + "  startup-time                    # Show basic startup information\n"
+        + "  startup-time -d                 # Show detailed information\n"
+        + "  startup-time --format human     # Human readable format")
 public class StartupTimeCommand extends AnnotatedCommand {
 
     private boolean detailed = false;

@@ -1,3 +1,4 @@
+
 package com.taobao.arthas.core.command.view;
 
 import com.taobao.arthas.core.command.model.StartupTimeModel;
@@ -7,6 +8,7 @@ import com.taobao.text.ui.TableElement;
 import com.taobao.text.util.RenderUtil;
 
 import java.text.SimpleDateFormat;
+import com.taobao.arthas.core.command.constant.StartupTimeConstants;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +20,7 @@ import static com.taobao.text.ui.Element.label;
  * @author Huang Junhao
  */
 public class StartupTimeView extends ResultView<StartupTimeModel> {
+    private static final int ARGUMENT_SIZE = 10;
 
     @Override
     public void draw(CommandProcess process, StartupTimeModel result) {
@@ -35,7 +38,7 @@ public class StartupTimeView extends ResultView<StartupTimeModel> {
 
     private void drawHumanFormat(CommandProcess process, StartupTimeModel result) {
         TableElement table = new TableElement(2, 1).leftCellPadding(1).rightCellPadding(1);
-        
+
         table.row(true, label("Application Startup Time Statistics").style(Decoration.bold.bold()));
         table.row("", "");
 
@@ -74,11 +77,11 @@ public class StartupTimeView extends ResultView<StartupTimeModel> {
         if (args != null && !args.isEmpty()) {
             table.row("");
             table.row("JVM Arguments:");
-            for (int i = 0; i < Math.min(args.size(), 10); i++) {
+            for (int i = 0; i < Math.min(args.size(), ARGUMENT_SIZE); i++) {
                 table.row("  " + (i + 1) + ". " + args.get(i));
             }
-            if (args.size() > 10) {
-                table.row("  ... and " + (args.size() - 10) + " more arguments");
+            if (args.size() > ARGUMENT_SIZE) {
+                table.row("  ... and " + (args.size() - ARGUMENT_SIZE) + " more arguments");
             }
         }
 
@@ -91,10 +94,12 @@ public class StartupTimeView extends ResultView<StartupTimeModel> {
         table.row(true, label("Uptime Analysis").style(Decoration.bold.bold()));
 
         long uptimeMs = result.getUptime();
-        long days = uptimeMs / (24 * 60 * 60 * 1000);
-        long hours = (uptimeMs % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000);
-        long minutes = (uptimeMs % (60 * 60 * 1000)) / (60 * 1000);
-        long seconds = (uptimeMs % (60 * 1000)) / 1000;
+        long days = uptimeMs / (StartupTimeConstants.SECONDS_PER_DAY * StartupTimeConstants.DECIMAL_BASE);
+        long hours = (uptimeMs % (StartupTimeConstants.SECONDS_PER_DAY * StartupTimeConstants.DECIMAL_BASE))
+                / (StartupTimeConstants.SECONDS_PER_HOUR * StartupTimeConstants.DECIMAL_BASE);
+        long minutes = (uptimeMs % (StartupTimeConstants.SECONDS_PER_HOUR * StartupTimeConstants.DECIMAL_BASE))
+                / (StartupTimeConstants.MILLISECONDS_PER_MINUTE);
+        long seconds = (uptimeMs % (StartupTimeConstants.MILLISECONDS_PER_MINUTE)) / StartupTimeConstants.DECIMAL_BASE;
 
         table.row("Total Uptime:", formatDuration(uptimeMs));
         table.row("Days:", String.valueOf(days));
@@ -104,11 +109,11 @@ public class StartupTimeView extends ResultView<StartupTimeModel> {
         table.row("", "");
 
         String status;
-        if (uptimeMs < 60 * 1000) {
+        if (uptimeMs < StartupTimeConstants.MILLISECONDS_PER_MINUTE) {
             status = "Just Started";
-        } else if (uptimeMs < 60 * 60 * 1000) {
+        } else if (uptimeMs < StartupTimeConstants.SECONDS_PER_HOUR * StartupTimeConstants.DECIMAL_BASE) {
             status = "Recently Started";
-        } else if (uptimeMs < 24 * 60 * 60 * 1000) {
+        } else if (uptimeMs < StartupTimeConstants.SECONDS_PER_DAY * StartupTimeConstants.DECIMAL_BASE) {
             status = "Running Stable";
         } else {
             status = "Long Running";
@@ -133,22 +138,25 @@ public class StartupTimeView extends ResultView<StartupTimeModel> {
     }
 
     private String formatDuration(long millis) {
-        if (millis < 1000) {
+        if (millis < StartupTimeConstants.DECIMAL_BASE) {
             return millis + "ms";
-        } else if (millis < 60 * 1000) {
-            long seconds = millis / 1000;
+        } else if (millis < StartupTimeConstants.MILLISECONDS_PER_MINUTE) {
+            long seconds = millis / StartupTimeConstants.DECIMAL_BASE;
             return seconds + "s";
-        } else if (millis < 60 * 60 * 1000) {
-            long minutes = millis / (60 * 1000);
-            long seconds = (millis % (60 * 1000)) / 1000;
+        } else if (millis < StartupTimeConstants.SECONDS_PER_HOUR * StartupTimeConstants.DECIMAL_BASE) {
+            long minutes = millis / (StartupTimeConstants.MILLISECONDS_PER_MINUTE);
+            long seconds = (millis % (StartupTimeConstants.MILLISECONDS_PER_MINUTE))
+                    / StartupTimeConstants.DECIMAL_BASE;
             return minutes + "m " + seconds + "s";
-        } else if (millis < 24 * 60 * 60 * 1000) {
-            long hours = millis / (60 * 60 * 1000);
-            long minutes = (millis % (60 * 60 * 1000)) / (60 * 1000);
+        } else if (millis < StartupTimeConstants.SECONDS_PER_DAY * StartupTimeConstants.DECIMAL_BASE) {
+            long hours = millis / (StartupTimeConstants.SECONDS_PER_HOUR * StartupTimeConstants.DECIMAL_BASE);
+            long minutes = (millis % (StartupTimeConstants.SECONDS_PER_HOUR * StartupTimeConstants.DECIMAL_BASE))
+                    / (StartupTimeConstants.MILLISECONDS_PER_MINUTE);
             return hours + "h " + minutes + "m";
         } else {
-            long days = millis / (24 * 60 * 60 * 1000);
-            long hours = (millis % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000);
+            long days = millis / (StartupTimeConstants.SECONDS_PER_DAY * StartupTimeConstants.DECIMAL_BASE);
+            long hours = (millis % (StartupTimeConstants.SECONDS_PER_DAY * StartupTimeConstants.DECIMAL_BASE))
+                    / (StartupTimeConstants.SECONDS_PER_HOUR * StartupTimeConstants.DECIMAL_BASE);
             return days + "d " + hours + "h";
         }
     }

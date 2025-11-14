@@ -1,35 +1,35 @@
+
 package com.taobao.arthas.core.command.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 性能数据辅助类
- * 用于存储和传递性能指标数据
+ * 性能数据辅助类 用于存储和传递性能指标数据
  *
  * @author Huang Junhao
  **/
-public class PerformanceData {
-    
+public class PerformanceModel {
+
     private long totalMemory;
     private long freeMemory;
     private long maxMemory;
     private long usedMemory;
     private double memoryUsagePercent;
-    
+
     private int threadCount;
     private int peakThreadCount;
     private int daemonThreadCount;
-    
+
     private long gcCount;
     private long gcTime;
-    
+
     private long loadedClassCount;
     private long totalLoadedClassCount;
     private long unloadedClassCount;
-    
+
     private int availableProcessors;
-    
+
     private int performanceScore;
     private String performanceLevel;
     private List<String> issues = new ArrayList<>();

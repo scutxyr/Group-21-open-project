@@ -1,3 +1,4 @@
+
 package com.taobao.arthas.core.util;
 
 import com.alibaba.arthas.deps.org.slf4j.Logger;
@@ -119,18 +120,14 @@ public class ArthasBanner {
         if (appName == null) {
             appName = System.getProperty("spring.application.name");
         }
-        TableElement table = new TableElement().rightCellPadding(1)
-                        .row("wiki", wiki())
-                        .row("tutorials", tutorials())
-                        .row("version", version())
-                        .row("main_class", PidUtils.mainClass());
+        TableElement table = new TableElement().rightCellPadding(1).row("wiki", wiki()).row("tutorials", tutorials())
+                .row("version", version()).row("main_class", PidUtils.mainClass());
 
         if (appName != null) {
             table.row("app_name", appName);
         }
-        table.row("pid", PidUtils.currentPid())
-             .row("start_time", DateUtils.getStartDateTime())
-             .row("current_time", DateUtils.getCurrentDateTime());
+        table.row("pid", PidUtils.currentPid()).row("start_time", DateUtils.getStartDateTime()).row("current_time",
+                DateUtils.getCurrentDateTime());
         for (Entry<String, String> entry : infos.entrySet()) {
             table.row(entry.getKey(), entry.getValue());
         }
