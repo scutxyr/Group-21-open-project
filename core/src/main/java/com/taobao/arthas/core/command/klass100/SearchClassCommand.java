@@ -22,6 +22,7 @@ import com.taobao.arthas.core.util.ClassLoaderUtils;
 import com.taobao.arthas.core.util.ResultUtils;
 import com.taobao.arthas.core.util.SearchUtils;
 import com.taobao.arthas.core.util.StringUtils;
+import com.taobao.arthas.core.util.TtlCache;
 import com.taobao.arthas.core.util.affect.RowAffect;
 import com.taobao.middleware.cli.annotations.Argument;
 import com.taobao.middleware.cli.annotations.Description;
@@ -53,6 +54,11 @@ public class SearchClassCommand extends AnnotatedCommand {
     private String classLoaderToString;
     private Integer expand;
     private int numberOfLimit = 100;
+
+    // Cache for sc results to avoid repeated full class scanning.
+    // Short TTL keeps behavior close to original; only speeds up repeated queries.
+    private static final TtlCache<String, List<Class<?>>> SC_CACHE =
+            new TtlCache<>(60_000L, 200);
 
     @Argument(argName = "class-pattern", index = 0)
     @Description("Class name pattern, use either '.' or '/' as separator")
@@ -108,6 +114,14 @@ public class SearchClassCommand extends AnnotatedCommand {
         this.classLoaderToString = classLoaderToString;
     }
 
+    private String cacheKey() {
+        // Build a key from parameters that affect class search result.
+        return classPattern + "|regex=" + isRegEx
+                + "|hash=" + (hashCode == null ? "" : hashCode)
+                + "|clz=" + (classLoaderClass == null ? "" : classLoaderClass)
+                + "|clStr=" + (classLoaderToString == null ? "" : classLoaderToString);
+    }
+
     @Override
     public void process(final CommandProcess process) {
         // TODO: null check
@@ -121,7 +135,7 @@ public class SearchClassCommand extends AnnotatedCommand {
                 tips = "class name: " + classLoaderClass;
             }
             if (classLoaderToString != null) {
-                tips = tips + (StringUtils.isEmpty(tips) ? "ClassLoader#toString(): " : ", ClassLoader#toString(): ") + classLoaderToString;
+                tips = "classLoader ToString: " + classLoaderToString;
             }
             if (matchedClassLoaders.size() == 1) {
                 hashCode = Integer.toHexString(matchedClassLoaders.get(0).hashCode());
@@ -139,7 +153,13 @@ public class SearchClassCommand extends AnnotatedCommand {
             }
         }
 
-        List<Class<?>> matchedClasses = new ArrayList<Class<?>>(SearchUtils.searchClass(inst, classPattern, isRegEx, hashCode));
+        String key = cacheKey();
+        List<Class<?>> matchedClasses = SC_CACHE.get(key);
+        if (matchedClasses == null) {
+            matchedClasses = new ArrayList<Class<?>>(SearchUtils.searchClass(inst, classPattern, isRegEx, hashCode));
+            SC_CACHE.put(key, matchedClasses);
+        }
+
         Collections.sort(matchedClasses, new Comparator<Class<?>>() {
             @Override
             public int compare(Class<?> c1, Class<?> c2) {
@@ -149,8 +169,8 @@ public class SearchClassCommand extends AnnotatedCommand {
 
         if (isDetail) {
             if (numberOfLimit > 0 && matchedClasses.size() > numberOfLimit) {
-                process.end(-1, "The number of matching classes is greater than : " + numberOfLimit+". \n" +
-                        "Please specify a more accurate 'class-patten' or use the parameter '-n' to change the maximum number of matching classes.");
+                process.end(-1, "The number of matching classes is greater than : " + numberOfLimit + ". \n" +
+                        "Please specify a more accurate 'class-pattern' or use parameter '-n' to change the maximum number of matching classes.");
                 return;
             }
             for (Class<?> clazz : matchedClasses) {

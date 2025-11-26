@@ -23,6 +23,7 @@ import com.taobao.arthas.core.util.ClassUtils;
 import com.taobao.arthas.core.util.ClassLoaderUtils;
 import com.taobao.arthas.core.util.SearchUtils;
 import com.taobao.arthas.core.util.StringUtils;
+import com.taobao.arthas.core.util.TtlCache;
 import com.taobao.arthas.core.util.affect.RowAffect;
 import com.taobao.arthas.core.util.matcher.Matcher;
 import com.taobao.arthas.core.util.matcher.RegexMatcher;
@@ -58,6 +59,11 @@ public class SearchMethodCommand extends AnnotatedCommand {
     private boolean isDetail = false;
     private boolean isRegEx = false;
     private int numberOfLimit = 100;
+
+    // TTL cache for sm results to avoid repeated class scanning.
+    private static final TtlCache<String, java.util.Set<Class<?>>> SM_CACHE =
+            new TtlCache<String, java.util.Set<Class<?>>>(60_000L, 200);
+
 
     @Argument(argName = "class-pattern", index = 0)
     @Description("Class name pattern, use either '.' or '/' as separator")
@@ -101,6 +107,18 @@ public class SearchMethodCommand extends AnnotatedCommand {
         this.numberOfLimit = numberOfLimit;
     }
 
+    private String buildCacheKey() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(classPattern).append("|regex=").append(isRegEx);
+        if (hashCode != null) {
+            sb.append("|hash=").append(hashCode);
+        }
+        if (classLoaderClass != null) {
+            sb.append("|clz=").append(classLoaderClass);
+        }
+        return sb.toString();
+    }
+
     @Override
     public void process(CommandProcess process) {
         RowAffect affect = new RowAffect();
@@ -126,7 +144,13 @@ public class SearchMethodCommand extends AnnotatedCommand {
             }
         }
 
-        Set<Class<?>> matchedClasses = SearchUtils.searchClass(inst, classPattern, isRegEx, hashCode);
+        String cacheKey = buildCacheKey();
+        Set<Class<?>> matchedClasses = SM_CACHE.get(cacheKey);
+        if (matchedClasses == null) {
+            matchedClasses = SearchUtils.searchClass(inst, classPattern, isRegEx, hashCode);
+            SM_CACHE.put(cacheKey, matchedClasses);
+        }
+
 
         if (numberOfLimit > 0 && matchedClasses.size() > numberOfLimit) {
             process.end(-1, "The number of matching classes is greater than : " + numberOfLimit+". \n" +

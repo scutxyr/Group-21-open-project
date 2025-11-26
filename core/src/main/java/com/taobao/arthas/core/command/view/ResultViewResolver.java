@@ -1,4 +1,3 @@
-
 package com.taobao.arthas.core.command.view;
 
 import com.alibaba.arthas.deps.org.slf4j.Logger;
@@ -32,12 +31,12 @@ public class ResultViewResolver {
         try {
             registerView(RowAffectView.class);
 
-            // basic1000
+            //basic1000
             registerView(StatusView.class);
             registerView(VersionView.class);
             registerView(MessageView.class);
             registerView(HelpView.class);
-            // registerView(HistoryView.class);
+            //registerView(HistoryView.class);
             registerView(EchoView.class);
             registerView(CatView.class);
             registerView(Base64View.class);
@@ -50,7 +49,7 @@ public class ResultViewResolver {
             registerView(ResetView.class);
             registerView(ShutdownView.class);
 
-            // klass100
+            //klass100
             registerView(ClassLoaderView.class);
             registerView(DumpClassView.class);
             registerView(GetStaticView.class);
@@ -62,10 +61,10 @@ public class ResultViewResolver {
             registerView(SearchClassView.class);
             registerView(SearchMethodView.class);
 
-            // logger
+            //logger
             registerView(LoggerView.class);
 
-            // monitor2000
+            //monitor2000
             registerView(DashboardView.class);
             registerView(JvmView.class);
             registerView(MemoryView.class);

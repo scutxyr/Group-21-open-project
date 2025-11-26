@@ -40,7 +40,7 @@ import com.taobao.arthas.core.shell.command.AnnotatedCommand;
 import com.taobao.arthas.core.shell.command.Command;
 import com.taobao.arthas.core.shell.command.CommandResolver;
 import com.taobao.middleware.cli.annotations.Name;
-
+import com.taobao.arthas.core.command.logger.*;
 /**
  * TODO automatically discover the built-in commands.
  * 
@@ -112,6 +112,7 @@ public class BuiltinCommandPack implements CommandResolver {
         commandClassList.add(MemoryLeakCommand.class);
         commandClassList.add(StartupTimeCommand.class);
         commandClassList.add(PerfCounterCommand.class);
+        commandClassList.add(LogStatCommand.class);
         try {
             if (ClassLoader.getSystemClassLoader().getResource("jdk/jfr/Recording.class") != null) {
                 commandClassList.add(JFRCommand.class);
