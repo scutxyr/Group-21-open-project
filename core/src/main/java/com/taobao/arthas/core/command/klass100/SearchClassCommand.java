@@ -126,6 +126,7 @@ public class SearchClassCommand extends AnnotatedCommand {
     public void process(final CommandProcess process) {
         RowAffect affect = new RowAffect();
         Instrumentation inst = process.session().getInstrumentation();
+        process.write("changed\n");
 
         if (hashCode == null && (classLoaderClass != null || classLoaderToString != null)) {
             List<ClassLoader> matchedClassLoaders = ClassLoaderUtils.getClassLoader(inst, classLoaderClass, classLoaderToString);

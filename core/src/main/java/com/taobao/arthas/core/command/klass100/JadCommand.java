@@ -65,6 +65,11 @@ public class JadCommand extends AnnotatedCommand {
      */
     private boolean sourceOnly = false;
 
+    // TTL cache for jad class search results to avoid repeated scanning.
+    private static final TtlCache<String, java.util.Set<Class<?>>> JAD_CACHE =
+            new TtlCache<String, java.util.Set<Class<?>>>(60_000L, 200);
+
+
     @Argument(argName = "class-pattern", index = 0)
     @Description("Class name pattern, use either '.' or '/' as separator")
     public void setClassPattern(String classPattern) {
@@ -121,8 +126,21 @@ public class JadCommand extends AnnotatedCommand {
         this.directory = directory;
     }
 
+    private String buildCacheKey() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(classPattern).append("|regex=").append(isRegEx);
+        if (code != null) {
+            sb.append("|code=").append(code);
+        }
+        if (classLoaderClass != null) {
+            sb.append("|clz=").append(classLoaderClass);
+        }
+        return sb.toString();
+    }
+
     @Override
     public void process(CommandProcess process) {
+
         if (directory != null && !FileUtils.isDirectoryOrNotExist(directory)) {
             process.end(-1, directory + " :is not a directory, please check it");
             return;
@@ -146,8 +164,14 @@ public class JadCommand extends AnnotatedCommand {
                 return;
             }
         }
-        
-        Set<Class<?>> matchedClasses = SearchUtils.searchClassOnly(inst, classPattern, isRegEx, code);
+
+        String cacheKey = buildCacheKey();
+        Set<Class<?>> matchedClasses = JAD_CACHE.get(cacheKey);
+        if (matchedClasses == null) {
+            matchedClasses = SearchUtils.searchClassOnly(inst, classPattern, isRegEx, code);
+            JAD_CACHE.put(cacheKey, matchedClasses);
+        }
+
 
         try {
             final RowAffect affect = new RowAffect();
@@ -190,7 +214,7 @@ public class JadCommand extends AnnotatedCommand {
             Map<Class<?>, File> classFiles = transformer.getDumpResult();
             if (classFiles == null || classFiles.isEmpty()) {
                 return ExitStatus.failure(-1, "jad: fail to dump class file for decompiler, make sure you have write permission of the directory \"" + transformer.dumpDir() +
-                "\" or try with \"-d/--directory\" to specify the directory of dump files");
+                        "\" or try with \"-d/--directory\" to specify the directory of dump files");
             }
             File classFile = classFiles.get(c);
             Pair<String,NavigableMap<Integer,Integer>> decompileResult = Decompiler.decompileWithMappings(classFile.getAbsolutePath(), methodName, hideUnicode, lineNumber);
