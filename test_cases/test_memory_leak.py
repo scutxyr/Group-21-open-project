@@ -25,8 +25,6 @@ class TestMemoryLeak(object):
             home_page.terminal_input('memory-leak')
             home_page.terminal_input(Keys.ENTER)
             time.sleep(2.0)  # 内存分析可能需要更长时间
-            
-            # 使用图片比对验证输出结果（比OCR更可靠）
             home_page.image_operate(tc.data_dir + "\\memory_leak_result.png")
             
             print(f"\n[测试通过] memory-leak命令输出与预期图片匹配")

@@ -20,13 +20,9 @@ class TestClassLoader(object):
         with goto_tool(tc.Tool) as home_page:
             time.sleep(0.5)
             home_page.click_controller()
-            
-            # 执行classloader命令
             home_page.terminal_input('classloader')
             home_page.terminal_input(Keys.ENTER)
             time.sleep(1.5)
-            
-            # 使用图片比对验证输出结果（比OCR更可靠）
             home_page.image_operate(tc.data_dir + "\\classloader_result.png")
             
             print(f"\n[测试通过] classloader命令输出与预期图片匹配")

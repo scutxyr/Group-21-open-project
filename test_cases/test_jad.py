@@ -25,8 +25,6 @@ class TestJad(object):
             home_page.terminal_input('jad demo.MathGame')
             home_page.terminal_input(Keys.ENTER)
             time.sleep(2.0)  # 反编译可能需要更长时间
-            
-            # 使用图片比对验证输出结果（比OCR更可靠）
             home_page.image_operate(tc.data_dir + "\\jad_result.png")
             
             print(f"\n[测试通过] jad demo.MathGame命令输出与预期图片匹配")
