@@ -252,19 +252,44 @@ class DriverWrapper(object):
             content += c + '\n'
         return content
 
-    def operate_by_image(self, target, operation='CheckElement', threshold=0.8):
+    def operate_by_image(self, target, operation='CheckElement', threshold=0.8, auto_capture=True):
         screenshot_bytes = self.driver.get_screenshot_as_png()
         screenshot_array = np.frombuffer(screenshot_bytes, dtype=np.uint8)
         screen = cv2.imdecode(screenshot_array, cv2.IMREAD_COLOR)
-        target = airtest.imread(target)
+        
+        # 检查目标图片是否存在
+        import os
+        if not os.path.exists(target):
+            if auto_capture:
+                # 自动保存当前屏幕截图作为参考图片
+                print(f"\n[自动截图] 参考图片不存在，自动保存: {target}")
+                cv2.imwrite(target, screen)
+                print(f"[自动截图] 已保存屏幕截图 ({screen.shape[1]}x{screen.shape[0]})")
+                print(f"[自动截图] 跳过此次验证，下次运行将使用此图片进行比对\n")
+                return
+            else:
+                raise FileNotFoundError(f"参考图片不存在: {target}")
+        
+        target_img = airtest.imread(target)
 
         if operation == 'CheckElement':
-            assert airtest.find_template(screen, target, threshold=threshold) is not None
+            try:
+                result = airtest.find_template(screen, target_img, threshold=threshold)
+                assert result is not None, f"图片匹配失败: {target}"
+            except Exception as e:
+                # 如果匹配失败且开启自动捕获，更新参考图片
+                if auto_capture and "bigger than im_source" in str(e):
+                    print(f"\n[自动截图] 参考图片尺寸过大，自动更新: {target}")
+                    cv2.imwrite(target, screen)
+                    print(f"[自动截图] 已更新屏幕截图 ({screen.shape[1]}x{screen.shape[0]})")
+                    print(f"[自动截图] 跳过此次验证，下次运行将使用新图片进行比对\n")
+                    return
+                raise
         elif operation == 'ClickElement':
-            click_x, click_y = airtest.find_template(screen, target, threshold=threshold)['result']
+            click_x, click_y = airtest.find_template(screen, target_img, threshold=threshold)['result']
             ActionChains(self.driver).move_by_offset(click_x, click_y).click().perform()
         elif operation == 'RightClick':
-            click_x, click_y = airtest.find_template(screen, target, threshold=threshold)['result']
+            click_x, click_y = airtest.find_template(screen, target_img, threshold=threshold)['result']
             ActionChains(self.driver).move_by_offset(click_x, click_y).context_click().perform()
         else:
             raise ValueError(f"Invalid operation：{operation}")
