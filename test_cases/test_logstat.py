@@ -16,9 +16,7 @@ class TestLogStat(object):
             home_page.terminal_input(Keys.ENTER)
             time.sleep(1.0)
 
-            terminal_text = home_page.get_terminal_text()
+            # 使用图片比对验证输出结果（比OCR更可靠）
+            home_page.image_operate(tc.data_dir + "\\logstat_result.png")
             
-            assert len(terminal_text) > 0, "logstat应有输出"
-            
-            print(f"\n[测试通过] logstat命令执行成功")
-            print(f"输出长度: {len(terminal_text)} 字符")
+            print(f"\n[测试通过] logstat命令输出与预期图片匹配")

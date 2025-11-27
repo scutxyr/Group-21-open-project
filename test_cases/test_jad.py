@@ -26,13 +26,7 @@ class TestJad(object):
             home_page.terminal_input(Keys.ENTER)
             time.sleep(2.0)  # 反编译可能需要更长时间
             
-            # 获取终端输出并验证
-            terminal_text = home_page.get_terminal_text()
+            # 使用图片比对验证输出结果（比OCR更可靠）
+            home_page.image_operate(tc.data_dir + "\\jad_result.png")
             
-            # 验证反编译输出包含MathGame类的关键内容
-            assert 'MathGame' in terminal_text, "jad输出应包含MathGame类名"
-            assert 'public' in terminal_text or 'class' in terminal_text, \
-                "jad输出应包含Java代码关键字"
-            
-            print(f"\n[测试通过] jad demo.MathGame命令成功反编译")
-            print(f"输出长度: {len(terminal_text)} 字符")
+            print(f"\n[测试通过] jad demo.MathGame命令输出与预期图片匹配")
